@@ -30,7 +30,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
         // Precondici�n: 
 		// COMPLETAR EL CODIGO Y CALCULAR EL COSTE
 		Node<T> eliminado=null;
-		if (this.last==null){
+		if (this.last==null){return null;
 		}
 		else{
 			if (count==1){
