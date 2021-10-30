@@ -1,11 +1,16 @@
 package eda;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import java.util.Iterator;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class PruebaDoubleLinkedList {
 	
-	public static void visualizarNodos(UnorderedDoubleLinkedList<Integer> l) {
+	public void visualizarNodos(UnorderedDoubleLinkedList<Integer> l) {
 		Iterator<Integer> it = l.iterator();
 		System.out.println();
 		while (it.hasNext()) {
@@ -18,17 +23,17 @@ public class PruebaDoubleLinkedList {
 	public static void main(String[] args)  {
 
 		UnorderedDoubleLinkedList<Integer> l = new UnorderedDoubleLinkedList<Integer>();
-		l.addToRear(1);
-		l.addToRear(3);
+		assertEquals(l.size(), 0);
+		l.addToRear(1);//lista vacia
+		assertEquals(l.size(), 1);
+		l.addToRear(3);//lista 1 elemento
+		assertEquals(l.size(), 2);
 		l.addToRear(6);
 		l.addToRear(7);
-		l.addToRear(9);
-		l.addToRear(0);
+		assertEquals(l.last(), 7);//para comprobar que se esta añadiendo al final
 		l.addToRear(20);
-		l.addToFront(8);
-		l.remove(new Integer(7));
-
-		
+		assertEquals(l.last(), 20);//para comprobar que se esta añadiendo al final
+		assertEquals(l.size(), 5);
 		System.out.print(" Lista ...............");
 		visualizarNodos(l);
 		System.out.println(" Num elementos: " + l.size());
