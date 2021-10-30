@@ -34,15 +34,18 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		}
 		else{
 			if (count==1){
+				eliminado=last;
 				this.last=null;
 				this.count--;
-				eliminado=last;
+
 			}
 			else{
-				last.next=last.next.prev;
-				last.next.next=last;
+				eliminado=last.next;
+				last.next.next.prev=last;
+				last.next=last.next.next;
+
 				this.count--;
-				eliminado=last;
+
 			}
 		}
 		return eliminado.data;
@@ -60,6 +63,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 			}else{
 				this.last.prev.next=this.last.next;
 				this.last.next.prev=this.last.prev;
+				last=last.prev;
 			}
 			count--;
 			return (temp.data);
@@ -73,20 +77,25 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		if (this.isEmpty() || !this.contains(elem)) {
 			return null;
 		} else {
-			Node<T> act = this.last;
-			if (act.data.equals(elem)) {
-				this.last = act.prev;
-				act.prev.next = act.next;
-				act.next.prev = act.prev;
-			} else {
-				while (!act.data.equals(elem)) {
-					act = act.next;
+			if (count ==1){
+				count=0;
+				last=null;
+				return elem;
+			}else {
+				Node<T> act = this.last;
+				if (act.data.equals(elem)) {
+					this.last = act.prev;
+				} else {
+					while (!act.data.equals(elem)) {
+						act = act.next;
+					}
 				}
 				act.prev.next = act.next;
 				act.next.prev = act.prev;
+				this.count--;
+
+				return act.data;
 			}
-			this.count--;
-			return act.data;
 			//Elimina un elemento concreto de la lista
 			// COMPLETAR EL CODIGO Y CALCULAR EL COSTE
 			//O(n) para siendo n igual al numero de elementos de la lista

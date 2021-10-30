@@ -19,8 +19,8 @@ public class PruebaDoubleLinkedList {
 		}
 	}
 	
-	
-	public static void main(String[] args)  {
+	@Test
+	public void pruebaDoubleLinkedList() {
 
 		UnorderedDoubleLinkedList<Integer> l = new UnorderedDoubleLinkedList<Integer>();
 		assertEquals(l.size(), 0);
@@ -37,12 +37,92 @@ public class PruebaDoubleLinkedList {
 		System.out.print(" Lista ...............");
 		visualizarNodos(l);
 		System.out.println(" Num elementos: " + l.size());
-				
-		
-		System.out.println("Prueba Find ...............");
-		System.out.println("9? " + l.find(9));
-		System.out.println("0? " + l.find(0));
-		System.out.println("7? " + l.find(7));
-		
-}
+
+		assertEquals(l.removeLast(),20);
+
+		assertFalse(l.contains(20));
+		visualizarNodos(l);
+		assertNull(l.find(20));
+
+		assertEquals(l.find(1),1);
+		assertTrue(l.contains(7));
+		assertFalse(l.contains(33));
+		assertEquals(l.find(6),6);
+		assertEquals(l.find(30),null);
+
+		assertFalse(l.isEmpty());
+		assertEquals(l.removeLast(),7);
+		assertEquals(l.removeLast(),6);
+		assertEquals(l.removeLast(),3);
+
+		assertFalse(l.contains(33));//lista 1 elemento
+		assertTrue(l.contains(1));
+		assertEquals(l.find(33),null);//lista 1 elento
+		assertEquals(l.find(1), 1);
+		assertEquals(l.removeLast(),1);//lista 1 elemento
+		assertEquals(l.removeLast(),null);//lista vacia
+		assertTrue(l.isEmpty());
+		assertEquals(l.find(22), null);//lista vacia
+		assertFalse(l.contains(2220));//lista vacia
+
+		//lista vacia
+		assertNull(l.remove(2));
+
+		l.addToFront(0);
+		//lista de 1 elemento
+		assertNull(l.remove(2));
+		assertEquals(l.remove(0),0);
+		l.addToFront(0);
+		//lista varios elementos
+		l.addAfter(1,0);//lista 1 elemento
+		assertNull(l.remove(3));
+
+		l.addAfter(2,1);
+		assertEquals(l.remove(2),2);
+		l.addAfter(3,1);
+		l.addAfter(4,3);
+
+		l.addAfter(5,1);
+		l.addAfter(6,0);
+		l.remove(3);
+
+		System.out.print(" Lista ...............");
+		visualizarNodos(l);
+		System.out.println(" Num elementos: " + l.size());
+
+
+		l = new UnorderedDoubleLinkedList<Integer>();
+		//lista vacia
+		assertEquals(l.size(), 0);
+		assertEquals(l.first(),null);
+		assertEquals(l.last(),null);
+
+		//lista 1 elemento
+		l.addToFront(1);//
+		assertEquals(l.first(),1);
+		assertEquals(l.last(),1);
+		assertEquals(l.size(), 1);
+
+		//lista no vacia
+		assertEquals(l.size(), 1);
+		l.addToFront(2);
+		l.addToFront(3);
+		l.addToFront(4);
+		assertEquals(l.size(), 4);
+
+		assertEquals(l.first(),4);
+		assertEquals(l.last(),1);
+		System.out.print(" Lista ...............");
+		visualizarNodos(l);
+		System.out.println(" Num elementos: " + l.size());
+		//remove first
+		assertEquals(l.removeFirst(),4);//varios elementos
+		assertEquals(l.removeFirst(),3);
+		assertEquals(l.removeFirst(),2);
+		assertEquals(l.removeFirst(),1); //un elemento
+		assertEquals(l.removeFirst(),null); //lista vacia
+
+	}
+
+
 }
