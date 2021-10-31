@@ -122,6 +122,36 @@ public class PruebaDoubleLinkedList {
 		assertEquals(l.removeFirst(),1); //un elemento
 		assertEquals(l.removeFirst(),null); //lista vacia
 
+
+		//prueba iterador
+		//lista vacia
+		Iterator<Integer> itr= l.iterator();
+		assertEquals(itr.hasNext(),false);
+
+		//lista 1 elemento
+		l.addToRear(1);
+		itr= l.iterator();
+		assertEquals(itr.hasNext(),true);
+		assertEquals(itr.next(),1);
+		assertEquals(itr.hasNext(),false);
+		visualizarNodos(l);
+
+		//lista varios elementos
+		l.addToRear(2);
+		l.addToRear(3);
+		l.addToRear(4);
+
+		visualizarNodos(l);
+
+		itr= l.iterator();
+		assertEquals(itr.hasNext(),true);
+		assertEquals(itr.next(),1);
+		assertEquals(itr.next(),2);
+		assertEquals(itr.next(),3);
+		assertEquals(itr.next(),4);
+		assertEquals(itr.hasNext(),false);
+
+		visualizarNodos(l);
 	}
 
 
