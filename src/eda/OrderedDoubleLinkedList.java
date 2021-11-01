@@ -1,7 +1,9 @@
 package eda;
 
-public class OrderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements OrderedListADT<T> {
-	
+import java.util.Iterator;
+
+public class OrderedDoubleLinkedList<T extends Comparable<T>> extends DoubleLinkedList<T> implements OrderedListADT<T> {
+
 	public void add(T elem) {
 		// COMPLETAR EL CODIGO Y CALCULAR EL COSTE
 		Node<T> anadir = new Node<>(elem);
