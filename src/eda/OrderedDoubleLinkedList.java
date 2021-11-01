@@ -39,7 +39,8 @@ public class OrderedDoubleLinkedList<T extends Comparable<T>> extends DoubleLink
 			}
 		}
 		count++;
-	}
+	} //COSTE: El coste es lineal ya que en el peor de los casos lo añades al final si es el mas grande de la lista.
+		// O(n) siendo n el numero de elementos de la lista
 
 	// -1 si lo de las parentesis es mas grande
 	// 0 si son iguales
