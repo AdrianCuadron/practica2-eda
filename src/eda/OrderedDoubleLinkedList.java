@@ -47,6 +47,7 @@ public class OrderedDoubleLinkedList<T extends Comparable<T>> extends DoubleLink
 	// 1 si lo de las parentesis es mas pequeño
 	public void merge(DoubleLinkedList<T> lista){
 		//pre: lista es una lista ordenada
+		//coste O(m+n) siendo m y n las longitudes de las dos listas
 		if (last==null){
 			last=lista.last;
 			this.count=lista.count;
